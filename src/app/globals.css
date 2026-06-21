@@ -3,48 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --foreground: #0a0a0a;
-  --background: #ffffff;
-  --surface: #fafaf8;
-  --border: rgba(0, 0, 0, 0.1);
-  --muted: #71717a;
-  --accent: #1e40af;
-  --accent-bg: #eff6ff;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --fg: #1a1d23;
+  --fg-muted: #5f6571;
+  --fg-subtle: #9197a3;
+  --border: #e4e7ec;
+  --border-strong: #d0d5dd;
+  --accent: #3056d3;
+  --accent-hover: #274bc0;
+  --accent-soft: #eef2ff;
+  --success: #18794e;
+  --success-soft: #e6f4ec;
+  --warning: #b54708;
+  --warning-soft: #fef3e6;
+  --danger: #d92d20;
+  --danger-soft: #fef0ef;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground: #fafafa;
-    --background: #0a0a0a;
-    --surface: #18181b;
-    --border: rgba(255, 255, 255, 0.1);
-    --muted: #a1a1aa;
-    --accent: #60a5fa;
-    --accent-bg: #1e3a8a;
-  }
-}
+* { box-sizing: border-box; }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-sans);
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
 input, textarea, select {
-  background: var(--background);
-  color: var(--foreground);
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 12px;
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
   font-size: 14px;
+  font-family: inherit;
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
 }
+input::placeholder, textarea::placeholder { color: var(--fg-subtle); }
 input:focus, textarea:focus, select:focus {
   border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
+
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+a { color: var(--accent); text-decoration: none; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
